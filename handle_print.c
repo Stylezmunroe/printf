@@ -2,8 +2,8 @@
 /**
  * handle_print - Handles the printing of argument based on type
  * @fmt: The formatted string to print arguments
- * @list: List args to be printed.
- * @ind: The index
+ * @lst: List args to be printed.
+ * @indx: The index
  * @buffer: The buffer array used for printing.
  * @flags: The active flags used for calculations
  * @width: The width specifier
@@ -11,10 +11,10 @@
  * @size: The size specifier
  * Return: Returns 1 or 2
  */
-int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
+int handle_print(const char *fmt, int *indx, va_list lst, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int i, unknow_len = 0, printed_chars = -1;
+	int j, unknow_len = 0, printed_chars = -1;
 	fmt_t fmt_types[] = {
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
@@ -22,27 +22,27 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
 		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
-	for (i = 0; fmt_types[i].fmt != '\0'; i++)
-		if (fmt[*ind] == fmt_types[i].fmt)
-			return (fmt_types[i].fn(list, buffer, flags, width, precision, size));
+	for (j = 0; fmt_types[j].fmt != '\0'; j++)
+		if (fmt[*indx] == fmt_types[j].fmt)
+			return (fmt_types[j].fn(lst, buffer, flags, width, precision, size));
 
-	if (fmt_types[i].fmt == '\0')
+	if (fmt_types[j].fmt == '\0')
 	{
-		if (fmt[*ind] == '\0')
+		if (fmt[*indx] == '\0')
 			return (-1);
 		unknow_len += write(1, "%%", 1);
-		if (fmt[*ind - 1] == ' ')
+		if (fmt[*indx - 1] == ' ')
 			unknow_len += write(1, " ", 1);
 		else if (width)
 		{
-			--(*ind);
-			while (fmt[*ind] != ' ' && fmt[*ind] != '%')
-				--(*ind);
-			if (fmt[*ind] == ' ')
-				--(*ind);
+			--(*indx);
+			while (fmt[*indx] != ' ' && fmt[*ind] != '%')
+				--(*indx);
+			if (fmt[*indx] == ' ')
+				--(*indx);
 			return (1);
 		}
-		unknow_len += write(1, &fmt[*ind], 1);
+		unknow_len += write(1, &fmt[*indx], 1);
 		return (unknow_len);
 	}
 	return (printed_chars);
