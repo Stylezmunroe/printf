@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * get_width - Determines the width for printing
- * @fmt: The Formatted string in wch to print d argumnts.
+ * get_width - Compute the width for printing
+ * @fmt: The Formatted string used for representing the arguments
  * @j: The List argumnts to be printed.
  * @lst: The list of argumnts.
  *
- * Return: The determined width.
+ * Return: The calculated width.
  */
 int get_width(const char *fmt, int *j, va_list lst)
 {

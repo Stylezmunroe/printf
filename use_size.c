@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * get_size - Determines the casting size for the arguments
- * @fmt: The Formatted str in wch to print d arg
- * @j: The List arg to be printed.
+ * get_size - Evaluate the data type size for typecasting the argument
+ * @fmt: The Formatted string used to represent the argument
+ * @j: The List of arguments to be printed.
  *
- * Return: The calculated Precision.
+ * Return: The determined data type size (precision)
  */
 int get_size(const char *fmt, int *j)
 {

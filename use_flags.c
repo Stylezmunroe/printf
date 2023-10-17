@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * get_flags - Determines active flags
- * @fmt: Formatted string in wch too print d  arg
- * @j: accepts a parameter.
- * Return: Active Flags:
+ * get_flags - Evaluate and determine the active formatting flags
+ * @fmt: The formatted string representing the desired output
+ * @j: An input parameter utilized in the evaluation process
+ * Return: The set of flags that are currently active
  */
 int get_flags(const char *fmt, int *j)
 {

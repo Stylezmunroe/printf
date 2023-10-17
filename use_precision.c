@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * get_precision - Determines the precision for printing
- * @fmt: Formatted string in wch too print the arg.
- * @j: List of arg to be printed.
- * @lst: list arg.
+ * get_precision - Compute the precision value for printing
+ * @fmt: Formatted string within the wide-character to represent the argument
+ * @j: List of arguments to be printed
+ * @lst: List of arguments
  *
- * Return: Active Precision.
+ * Return: The calculated precision value
  */
 int get_precision(const char *fmt, int *j, va_list lst)
 {
